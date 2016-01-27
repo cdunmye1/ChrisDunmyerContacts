@@ -1,5 +1,6 @@
 package westga.edu.chrisdunmyercontacts;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,5 +53,44 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onButtonClick(View v) {
+        Button button = (Button) v;
+        EditText name = (EditText) findViewById(R.id.nameText);
+        EditText email = (EditText) findViewById(R.id.emailText);
+        EditText phone = (EditText) findViewById(R.id.phoneText);
+        TextView nameView = (TextView) findViewById(R.id.nameView);
+        TextView emailView = (TextView) findViewById(R.id.emailView);
+        TextView phoneView = (TextView) findViewById(R.id.phoneView);
+        TextView resultView  = (TextView) findViewById(R.id.resultView);
+        RadioButton cellRadioButton = (RadioButton) findViewById(R.id.cellRadioButton);
+
+        // Validate input is not empty
+        if (name.getText().toString().isEmpty()) {
+            resultView.setText("Missing Name!");
+            resultView.setTextColor(Color.RED);
+            return;
+        } else if (email.getText().toString().isEmpty()) {
+            resultView.setText("Missing Email!");
+            resultView.setTextColor(Color.RED);
+            return;
+        } else if (phone.getText().toString().isEmpty()) {
+            resultView.setText("Missing Phone Number!");
+            resultView.setTextColor(Color.RED);
+            return;
+        }
+
+        // Display Proper output
+        if (cellRadioButton.isChecked()) {
+            resultView.setText("Cell Phone Added!");
+            resultView.setTextColor(Color.GREEN);
+        } else {
+            resultView.setText("Home Phone Added!");
+            resultView.setTextColor(Color.GREEN);
+        }
+        nameView.setText("Name: " + name.getEditableText());
+        emailView.setText("Email: " + email.getEditableText());
+        phoneView.setText("Phone: " + phone.getEditableText());
     }
 }
