@@ -84,11 +84,10 @@ public class MainActivity extends AppCompatActivity {
         // Display Proper output
         if (cellRadioButton.isChecked()) {
             resultView.setText("Cell Phone Added!");
-            resultView.setTextColor(Color.GREEN);
         } else {
             resultView.setText("Home Phone Added!");
-            resultView.setTextColor(Color.GREEN);
         }
+        resultView.setTextColor(Color.rgb(102, 204, 0));
         nameView.setText("Name: " + name.getEditableText());
         emailView.setText("Email: " + email.getEditableText());
         phoneView.setText("Phone: " + phone.getEditableText());
